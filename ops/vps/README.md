@@ -42,3 +42,4 @@ Read [`production-acceptance.md`](production-acceptance.md) before moving any ho
 - `templates/Caddyfile` serves the static site with compression and explicit cache behavior.
 - `templates/arm-page-factory.service` is an optional server-side one-shot release service.
 - `cutover-manifest.example.yml` captures the exact first-host approval and rollback record.
+- `hostinger-baseline.md` maps the kit to a Hostinger VPS without embedding a server ID, IP, credential, or public hostname.
