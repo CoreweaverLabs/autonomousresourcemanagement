@@ -13,13 +13,15 @@ access:
   ssh_admin_source_ranges: []
 release:
   repository: CoreweaverLabs/autonomousresourcemanagement
-  source_branch: production
+  source_branch: main
   deployment_user: armdeploy
   vps_root: /var/www/arm-page-factory
+  site_root: /var/www/arm-page-factory/current/field-systems
   retained_releases: 5
 security:
   public_ports: [80, 443]
   tls_terminator: Caddy
+  ssh_host_key_verified: false
   provider_snapshot_verified: false
   host_firewall_verified: false
   certificate_verified: false

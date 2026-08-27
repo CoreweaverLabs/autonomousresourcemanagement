@@ -8,9 +8,9 @@ The first server and public hostname remain an explicit infrastructure decision.
 
 | Area | Required before the first cutover |
 | --- | --- |
-| Server | Supported Linux host, non-root deployment user, SSH public-key access, provider snapshot, and owner for patching/incident response. |
+| Server | Supported Linux host, non-root deployment user, SSH public-key access, a host key verified out-of-band and stored as `ARM_VPS_KNOWN_HOSTS`, provider snapshot, and owner for patching/incident response. |
 | Network | Provider firewall and host firewall allow public TCP 80/443. Restrict SSH to known administrative networks; do not open database or administration ports publicly. |
-| TLS | Install Caddy, associate the final hostname in `Caddyfile`, check the domain’s CAA policy, and verify certificate issuance before canonical traffic changes. |
+| TLS | Install Caddy, associate the final hostname and page-specific document root in `Caddyfile`, check the domain’s CAA policy, and verify certificate issuance before canonical traffic changes. |
 | Storage | Create `${VPS_ROOT}/releases`, `${VPS_ROOT}/shared`, and the `current` symlink owned by the deploy user. Keep a retained release set plus a provider-level snapshot. |
 | Observability | Keep Caddy access/error logs, configure an anonymous HTTPS health check, and name the person who receives a failed-check alert. |
 | DNS | Preserve the current origin, record the exact existing DNS values, and obtain explicit approval of the proposed record diff and rollback step. |
@@ -25,7 +25,7 @@ CONFIRM_VPS_RELEASE=yes VPS_HOST=... VPS_DEPLOY_USER=... \
   VPS_ROOT=/var/www/arm-page-factory bash ops/vps/scripts/release.sh
 ```
 
-Set the deployment workflow’s variables and deploy key only after the initial server ownership and hostname decisions are confirmed. Do not set `VPS_RELEASES_ENABLED=true` until the first manually verified release has passed.
+Set the deployment workflow’s variables, deploy key, and verified `ARM_VPS_KNOWN_HOSTS` secret only after the initial server ownership and hostname decisions are confirmed. `ARM_VPS_KNOWN_HOSTS` must be captured from a verified server/provider record, not generated during the deployment run. Do not set `VPS_RELEASES_ENABLED=true` until the first manually verified release has passed.
 
 ## Rollback
 

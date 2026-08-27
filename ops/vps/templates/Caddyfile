@@ -1,7 +1,7 @@
-# Replace __ARM_HOSTNAME__ only in the approved server configuration.
+# Replace __ARM_HOSTNAME__ and __ARM_SITE_ROOT__ only in the approved server configuration.
 # Caddy obtains and renews TLS after the hostname resolves to this server.
 __ARM_HOSTNAME__ {
-    root * /var/www/arm-page-factory/current
+    root * __ARM_SITE_ROOT__
     encode zstd gzip
 
     header {

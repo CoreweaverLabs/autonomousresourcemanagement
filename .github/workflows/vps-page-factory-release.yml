@@ -2,7 +2,7 @@ name: VPS page factory release
 
 on:
   push:
-    branches: [production]
+    branches: [main]
     paths:
       - "index.html"
       - "robots.txt"
@@ -11,6 +11,7 @@ on:
       - "schema.json"
       - "aure/**"
       - "coreweaver-labs/**"
+      - "field-systems/**"
       - "ops/vps/**"
       - ".github/workflows/vps-page-factory-release.yml"
   workflow_dispatch:
@@ -32,17 +33,18 @@ jobs:
           node-version: 22
       - name: Validate static release artifact
         run: node ops/vps/scripts/preflight.mjs
-      - name: Configure restricted deployment key
+      - name: Configure restricted deployment key and pinned server identity
         env:
           ARM_VPS_DEPLOY_KEY: ${{ secrets.ARM_VPS_DEPLOY_KEY }}
-          VPS_HOST: ${{ vars.VPS_HOST }}
+          ARM_VPS_KNOWN_HOSTS: ${{ secrets.ARM_VPS_KNOWN_HOSTS }}
         run: |
           test -n "$ARM_VPS_DEPLOY_KEY"
-          test -n "$VPS_HOST"
+          test -n "$ARM_VPS_KNOWN_HOSTS"
           install -d -m 700 ~/.ssh
           printf '%s' "$ARM_VPS_DEPLOY_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+          printf '%s\n' "$ARM_VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
       - name: Create immutable release
         env:
           CONFIRM_VPS_RELEASE: "yes"
