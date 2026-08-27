@@ -1,0 +1,44 @@
+# This file is a non-executable approval record. Do not replace placeholders or
+# apply infrastructure changes until the owner approves the exact values.
+target:
+  provider: __APPROVED_VPS_PROVIDER__
+  server_id: __APPROVED_SERVER_ID__
+  ipv4: __APPROVED_IPV4__
+  hostname: __APPROVED_PUBLIC_HOSTNAME__
+  canonical: false
+access:
+  server_owner: __NAME__
+  deployment_owner: __NAME__
+  incident_owner: __NAME__
+  ssh_admin_source_ranges: []
+release:
+  repository: CoreweaverLabs/autonomousresourcemanagement
+  source_branch: production
+  deployment_user: armdeploy
+  vps_root: /var/www/arm-page-factory
+  retained_releases: 5
+security:
+  public_ports: [80, 443]
+  tls_terminator: Caddy
+  provider_snapshot_verified: false
+  host_firewall_verified: false
+  certificate_verified: false
+observability:
+  healthcheck_url: https://__APPROVED_PUBLIC_HOSTNAME__/
+  alert_owner: __NAME__
+  access_log_path: /var/log/caddy/arm-page-factory-access.log
+dns_cutover:
+  previous_records: []
+  proposed_records: []
+  caa_records_checked: false
+  explicit_confirmation_received: false
+rollback:
+  previous_origin: __CURRENT_PUBLIC_ORIGIN__
+  previous_dns_records: []
+  prior_release_id: __RELEASE_ID__
+  validation_steps:
+    - anonymous HTTPS response
+    - expected canonical redirect
+    - certificate chain
+    - homepage mobile check
+    - sitemap and robots response

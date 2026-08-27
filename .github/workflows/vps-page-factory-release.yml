@@ -1,0 +1,54 @@
+name: VPS page factory release
+
+on:
+  push:
+    branches: [production]
+    paths:
+      - "index.html"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "llms.txt"
+      - "schema.json"
+      - "aure/**"
+      - "coreweaver-labs/**"
+      - "ops/vps/**"
+      - ".github/workflows/vps-page-factory-release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    # Keep automatic deployment dormant until a named owner configures and approves
+    # an existing VPS target. The workflow does not create a server or edit DNS.
+    if: vars.VPS_RELEASES_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: vps-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate static release artifact
+        run: node ops/vps/scripts/preflight.mjs
+      - name: Configure restricted deployment key
+        env:
+          ARM_VPS_DEPLOY_KEY: ${{ secrets.ARM_VPS_DEPLOY_KEY }}
+          VPS_HOST: ${{ vars.VPS_HOST }}
+        run: |
+          test -n "$ARM_VPS_DEPLOY_KEY"
+          test -n "$VPS_HOST"
+          install -d -m 700 ~/.ssh
+          printf '%s' "$ARM_VPS_DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+      - name: Create immutable release
+        env:
+          CONFIRM_VPS_RELEASE: "yes"
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_DEPLOY_USER: ${{ vars.VPS_DEPLOY_USER }}
+          VPS_PORT: ${{ vars.VPS_PORT }}
+          VPS_ROOT: ${{ vars.VPS_ROOT }}
+          RELEASE_ID: ${{ github.sha }}
+        run: bash ops/vps/scripts/release.sh
