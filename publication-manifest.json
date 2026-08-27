@@ -1,0 +1,19 @@
+{
+  "site": "Autonomous Resource Management",
+  "baseUrl": "https://autonomousresourcemanagement.com",
+  "publications": [
+    {"path": "/", "title": "Autonomous Resource Management — Definition, Framework & Signal Architecture", "kind": "reference"},
+    {"path": "/aure/claim-architecture/", "title": "What Is AI Claim Architecture?", "kind": "framework", "canonical": "https://aure.autonomousresourcemanagement.com/claim-architecture"},
+    {"path": "/aure/reviews/aure/", "title": "AURE Self-Review: Public Claim Architecture", "kind": "review", "canonical": "https://aure.autonomousresourcemanagement.com/reviews/aure"}
+  ],
+  "excluded": [
+    {"path": "/coreweaver-labs/", "reason": "Research archive; contains claims that require evidence review before publication."}
+  ],
+  "requiredChecks": [
+    "Every listed publication resolves to an index.html file",
+    "Every listed publication has a title, description, canonical URL, and JSON-LD or schema reference",
+    "Excluded archives remain noindex",
+    "Sitemap and llms.txt do not expose excluded archives",
+    "Material claims carry an evidence state or source path"
+  ]
+}
