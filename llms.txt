@@ -23,6 +23,10 @@ This site documents a working framework. It is not a formal standard, certificat
 
 This domain is the reference layer. It does not sell services, process payments, or claim to be interchangeable with the commercial properties below.
 
+## Field index
+
+- Field Systems — a bounded reference index for applying ARM questions to field contexts without asserting a deployed control system, certification, or outcome: https://autonomousresourcemanagement.com/field-systems/
+
 ## Relevant implementation paths
 
 - Swell Marketing — GEO, entity architecture, and AI visibility: https://swellmarketing.xyz

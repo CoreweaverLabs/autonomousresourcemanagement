@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Systems — A Bounded Index for Autonomous Resource Management</title>
+  <meta name="description" content="A source-aware field index for examining resource decisions in energy, industrial, and operating-system contexts through the Autonomous Resource Management framework.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://autonomousresourcemanagement.com/field-systems/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Field Systems — Autonomous Resource Management">
+  <meta property="og:description" content="A bounded field index for examining resource decisions, constraints, escalation, and retained records.">
+  <meta property="og:url" content="https://autonomousresourcemanagement.com/field-systems/">
+  <meta property="og:site_name" content="Autonomous Resource Management">
+  <meta name="twitter:card" content="summary">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://autonomousresourcemanagement.com/field-systems/#webpage",
+    "url": "https://autonomousresourcemanagement.com/field-systems/",
+    "name": "Field Systems — A Bounded Index for Autonomous Resource Management",
+    "description": "A source-aware field index for examining resource decisions in energy, industrial, and operating-system contexts through the Autonomous Resource Management framework.",
+    "isPartOf": {
+      "@id": "https://autonomousresourcemanagement.com/#website"
+    },
+    "about": {
+      "@id": "https://autonomousresourcemanagement.com/#arm-term"
+    },
+    "inLanguage": "en",
+    "datePublished": "2026-08-27",
+    "dateModified": "2026-08-27"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#10151c; --ink-soft:#4c5662; --paper:#f6f5f1; --panel:#ebeee9; --blue:#173f88; --signal:#ca4d3d; --rule:rgba(16,21,28,.15); --mono:'DM Mono',monospace; --sans:'DM Sans',sans-serif; --serif:'DM Serif Display',Georgia,serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:var(--sans); line-height:1.65; }
+    a { color:inherit; }
+    a:focus-visible { outline:3px solid var(--signal); outline-offset:4px; }
+    .masthead { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 5vw; border-bottom:1px solid var(--rule); background:rgba(246,245,241,.96); position:sticky; top:0; z-index:10; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; font:500 10px/1.3 var(--mono); letter-spacing:.14em; text-transform:uppercase; }
+    .mark { width:27px; height:27px; border:1px solid var(--blue); display:grid; place-items:center; color:var(--blue); font-size:10px; }
+    .masthead nav { display:flex; gap:24px; flex-wrap:wrap; justify-content:flex-end; font:500 10px/1.3 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+    .masthead nav a { text-decoration:none; }
+    .masthead nav a:hover { color:var(--blue); }
+    main { max-width:1250px; margin:0 auto; padding:0 5vw; }
+    .hero { padding:clamp(64px,10vw,132px) 0 56px; display:grid; grid-template-columns:minmax(0,1.18fr) minmax(280px,.82fr); gap:clamp(40px,8vw,112px); border-bottom:1px solid var(--rule); }
+    .eyebrow, .kicker { margin:0 0 22px; font:500 10px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.16em; color:var(--blue); }
+    .eyebrow::before { content:'●'; color:var(--signal); margin-right:10px; font-size:9px; }
+    h1, h2, h3 { margin:0; font-weight:400; }
+    h1 { max-width:10ch; font:clamp(3.2rem,7vw,6.75rem)/.93 var(--serif); letter-spacing:-.04em; }
+    .lede { align-self:end; border-left:2px solid var(--blue); padding:0 0 0 26px; }
+    .lede p { margin:0; max-width:42ch; font-size:1.18rem; color:var(--ink-soft); }
+    .lede strong { color:var(--ink); font-weight:600; }
+    .route { padding:56px 0; border-bottom:1px solid var(--rule); }
+    .route-head { display:flex; align-items:end; justify-content:space-between; gap:32px; margin-bottom:26px; }
+    h2 { font:clamp(2.1rem,4vw,3.5rem)/1.02 var(--serif); letter-spacing:-.025em; }
+    .route-head p { max-width:46ch; margin:0; color:var(--ink-soft); }
+    .route-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+    .route-step { min-height:170px; padding:22px; background:var(--paper); }
+    .route-step span { display:block; margin-bottom:44px; color:var(--blue); font:500 10px var(--mono); letter-spacing:.12em; }
+    .route-step strong { display:block; font-size:1rem; margin-bottom:6px; }
+    .route-step p { margin:0; color:var(--ink-soft); font-size:.9rem; line-height:1.5; }
+    .index { padding:76px 0; display:grid; grid-template-columns:minmax(180px,.6fr) minmax(0,1.4fr); gap:clamp(36px,7vw,104px); border-bottom:1px solid var(--rule); }
+    .index-intro p { color:var(--ink-soft); max-width:30ch; }
+    .field-list { border-top:1px solid var(--rule); }
+    .field { display:grid; grid-template-columns:70px minmax(0,1fr) minmax(0,.8fr); gap:22px; padding:24px 0; border-bottom:1px solid var(--rule); }
+    .field-id { color:var(--blue); font:500 10px var(--mono); letter-spacing:.12em; padding-top:6px; }
+    h3 { font:600 1.05rem/1.35 var(--sans); margin-bottom:7px; }
+    .field p { margin:0; color:var(--ink-soft); font-size:.94rem; }
+    .field .boundary { padding-left:18px; border-left:1px solid var(--rule); font:400 .82rem/1.5 var(--mono); color:#65717e; }
+    .boundary strong { display:block; margin-bottom:6px; color:var(--ink); font-weight:500; }
+    .principles { padding:76px 0; display:grid; grid-template-columns:1fr 1fr; gap:48px; border-bottom:1px solid var(--rule); }
+    .principles p { color:var(--ink-soft); max-width:52ch; }
+    .box { padding:28px; background:var(--panel); border-top:3px solid var(--blue); }
+    .box p { margin:0; color:var(--ink-soft); }
+    .box strong { color:var(--ink); }
+    .source-row { padding:56px 0 76px; display:grid; grid-template-columns:.7fr 1.3fr; gap:48px; }
+    .sources { margin:0; padding:0; list-style:none; border-top:1px solid var(--rule); }
+    .sources li { border-bottom:1px solid var(--rule); padding:15px 0; }
+    .sources a { color:var(--blue); font-size:.92rem; }
+    .sources span { display:block; color:var(--ink-soft); font-size:.82rem; margin-top:3px; }
+    .next { padding:56px 0; background:var(--blue); color:#fff; }
+    .next-inner { max-width:1250px; margin:0 auto; padding:0 5vw; display:flex; align-items:end; justify-content:space-between; gap:36px; }
+    .next h2 { max-width:14ch; }
+    .next p { max-width:48ch; color:rgba(255,255,255,.78); }
+    .action { display:inline-flex; align-items:center; gap:12px; padding:13px 18px; background:#fff; color:var(--blue); text-decoration:none; font:500 10px var(--mono); letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+    footer { padding:34px 5vw; color:var(--ink-soft); font:400 10px/1.6 var(--mono); letter-spacing:.06em; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+    @media (max-width:820px) { .hero,.index,.principles,.source-row { grid-template-columns:1fr; } .route-grid { grid-template-columns:repeat(2,1fr); } .field { grid-template-columns:52px 1fr; } .field .boundary { grid-column:2; } .route-head,.next-inner { display:block; } .route-head p { margin-top:18px; } .next-inner .action { margin-top:22px; } }
+    @media (max-width:560px) { .masthead { min-height:72px; } .masthead nav a:not(:last-child) { display:none; } .hero { padding-top:60px; } h1 { font-size:3.7rem; } .route-grid { grid-template-columns:1fr; } .route-step { min-height:auto; } .route-step span { margin-bottom:22px; } .field { gap:14px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="Autonomous Resource Management home"><span class="mark">ARM</span><span>Autonomous<br>Resource Management</span></a>
+    <nav aria-label="Primary navigation"><a href="/">Reference</a><a href="#field-index">Field index</a><a href="#sources">Sources</a><a href="https://coreweaverlabs.com/autonomous-resource-management#primitives">Method primitives ↗</a></nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div><p class="eyebrow">Field index / working frame</p><h1 id="page-title">Where resource decisions meet the field.</h1></div>
+      <div class="lede"><p><strong>Field Systems</strong> is a bounded index for teams examining how resource decisions, constraints, escalation, and retained records appear in different operating contexts. It is a framing tool, not a deployed control system.</p></div>
+    </section>
+
+    <section class="route" aria-labelledby="route-title">
+      <div class="route-head"><div><p class="kicker">A portable decision route</p><h2 id="route-title">Start with what must be inspectable.</h2></div><p>This five-part route adapts the ARM reference to a field context. It helps structure a question before assuming a system, product, integration, or outcome.</p></div>
+      <div class="route-grid" aria-label="Field systems decision route">
+        <div class="route-step"><span>01</span><strong>Observe</strong><p>Name the resource, its operating context, and the signals available for review.</p></div>
+        <div class="route-step"><span>02</span><strong>Compare</strong><p>Make the constraint, threshold, or trade-off explicit instead of treating it as implicit.</p></div>
+        <div class="route-step"><span>03</span><strong>Constrain</strong><p>Define the authority and limit that governs what a system may recommend or do.</p></div>
+        <div class="route-step"><span>04</span><strong>Escalate</strong><p>Specify where uncertainty, conflict, or exception returns to accountable human review.</p></div>
+        <div class="route-step"><span>05</span><strong>Retain</strong><p>Keep an inspectable record of the decision, its basis, and its permitted next step.</p></div>
+      </div>
+    </section>
+
+    <section class="index" id="field-index" aria-labelledby="index-title">
+      <div class="index-intro"><p class="kicker">Current contexts</p><h2 id="index-title">A field index, not a claim of operation.</h2><p>Each context below is a route for inquiry. It does not establish that ARM controls equipment, delivers an outcome, or is endorsed by an external organization.</p></div>
+      <div class="field-list">
+        <article class="field"><div class="field-id">F.01</div><div><h3>Energy-system decisions</h3><p>Consider how resource constraints, dispatch assumptions, escalation paths, and retained decision records could be framed in energy-system contexts.</p></div><div class="boundary"><strong>Boundary</strong>Links to an applied method discussion; it does not claim operation or optimization of an energy system.</div></article>
+        <article class="field"><div class="field-id">F.02</div><div><h3>Industrial automation contexts</h3><p>Examine the decision boundary between observation, interpretation, permitted action, and operator review in industrial settings.</p></div><div class="boundary"><strong>Boundary</strong>Does not assert deployment within an industrial control system or any safety, reliability, or performance effect.</div></article>
+        <article class="field"><div class="field-id">F.03</div><div><h3>Process and material routes</h3><p>Map the questions that surface around process state, material movement, monitoring, inspection, and accountable handoffs.</p></div><div class="boundary"><strong>Boundary</strong>Names application topics; it does not replace engineering review, safety controls, or operating procedures.</div></article>
+        <article class="field"><div class="field-id">F.04</div><div><h3>Evidence and governance</h3><p>Keep the claim, source, media record, review owner, and next decision visible as a system moves from framework to application.</p></div><div class="boundary"><strong>Boundary</strong>A cited framework informs context; it is not certification, endorsement, or compliance assurance.</div></article>
+      </div>
+    </section>
+
+    <section class="principles" aria-labelledby="limits-title">
+      <div><p class="kicker">How to use this page</p><h2 id="limits-title">Use a field to sharpen a question, not enlarge a promise.</h2></div>
+      <div class="box"><p><strong>What this index supports:</strong> a structured discussion of decision routes, sources, and escalation boundaries. <strong>What it does not support:</strong> a claim that a particular field implementation is safe, compliant, autonomous, certified, or already in operation.</p></div>
+    </section>
+
+    <section class="source-row" id="sources" aria-labelledby="sources-title">
+      <div><p class="kicker">Reference context</p><h2 id="sources-title">Sources that inform the inquiry.</h2></div>
+      <ol class="sources">
+        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a><span>Voluntary context for considering trustworthiness and risk-management practice; not a Coreweaver certification or control set.</span></li>
+        <li><a href="https://www.nist.gov/mep/robotics-and-manufacturing-automation" target="_blank" rel="noopener">NIST Manufacturing Extension Partnership — Robotics and Manufacturing Automation</a><span>Context for manufacturing automation applications including material handling and visual inspection.</span></li>
+        <li><a href="https://www.cisa.gov/topics/industrial-control-systems" target="_blank" rel="noopener">CISA — Industrial Control Systems</a><span>Reference context for industrial control-system security and operating environments.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <section class="next" aria-labelledby="next-title"><div class="next-inner"><div><p class="kicker">Method anchor</p><h2 id="next-title">Read the method before applying the field.</h2><p>The Coreweaver Labs ARM page explains the current method primitives that this index uses as a contextual anchor. Application pages should make their limits and source basis as legible as their proposed route.</p></div><a class="action" href="https://coreweaverlabs.com/autonomous-resource-management#primitives">View ARM primitives <span aria-hidden="true">→</span></a></div></section>
+
+  <footer><span>Field Systems / Autonomous Resource Management</span><span>Working index · Updated 2026-08-27</span><a href="/">Return to ARM reference</a></footer>
+</body>
+</html>
