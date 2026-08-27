@@ -9,6 +9,7 @@ This repo is content and structured data, not an application. There is no build 
 | File | Purpose |
 |---|---|
 | `index.html` | The definitional page for "Autonomous Resource Management" — includes inline JSON-LD (`WebPage`, `DefinedTerm`) for LLM/search citation. |
+| `field-systems/index.html` | A claim-safe field index that links the ARM reference to bounded application contexts; requires an approved host and route before public release. |
 | `coreweaver-labs/index.html` | Unpublished, noindex research archive; do not publish its performance claims without evidence. |
 | `schema.json` | Standalone schema.org graph for this reference, its term, and its author. |
 | `llms.txt` | Machine-readable summary and bounded routes to distinct implementation providers. |
