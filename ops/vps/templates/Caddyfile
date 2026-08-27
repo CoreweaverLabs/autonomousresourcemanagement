@@ -1,0 +1,29 @@
+# Replace __ARM_HOSTNAME__ and __ARM_SITE_ROOT__ only in the approved server configuration.
+# Caddy obtains and renews TLS after the hostname resolves to this server.
+__ARM_HOSTNAME__ {
+    root * __ARM_SITE_ROOT__
+    encode zstd gzip
+
+    header {
+        -Server
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "geolocation=(), microphone=(), camera=()"
+        Strict-Transport-Security "max-age=31536000"
+    }
+
+    @restricted path /.git/* /.github/* /ops/* /README.md
+    respond @restricted 404
+
+    file_server
+
+    @html path / /index.html /robots.txt /sitemap.xml /llms.txt /schema.json
+    header @html Cache-Control "public, max-age=300, stale-while-revalidate=60"
+
+    @static path *.css *.js *.svg *.png *.jpg *.jpeg *.webp *.ico *.woff *.woff2
+    header @static Cache-Control "public, max-age=31536000, immutable"
+
+    log {
+        output file /var/log/caddy/arm-page-factory-access.log
+    }
+}
