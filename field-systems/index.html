@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12100e">
   <title>Field Systems — A Bounded Index for Autonomous Resource Management</title>
   <meta name="description" content="A source-aware field index for examining resource decisions in energy, industrial, and operating-system contexts through the Autonomous Resource Management framework.">
   <meta name="robots" content="index, follow">
@@ -22,12 +23,8 @@
     "url": "https://autonomousresourcemanagement.com/field-systems/",
     "name": "Field Systems — A Bounded Index for Autonomous Resource Management",
     "description": "A source-aware field index for examining resource decisions in energy, industrial, and operating-system contexts through the Autonomous Resource Management framework.",
-    "isPartOf": {
-      "@id": "https://autonomousresourcemanagement.com/#website"
-    },
-    "about": {
-      "@id": "https://autonomousresourcemanagement.com/#arm-term"
-    },
+    "isPartOf": { "@id": "https://autonomousresourcemanagement.com/#website" },
+    "about": { "@id": "https://autonomousresourcemanagement.com/#arm-term" },
     "inLanguage": "en",
     "datePublished": "2026-08-27",
     "dateModified": "2026-08-27"
@@ -36,118 +33,111 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#10151c; --ink-soft:#4c5662; --paper:#f6f5f1; --panel:#ebeee9; --blue:#173f88; --signal:#ca4d3d; --rule:rgba(16,21,28,.15); --mono:'DM Mono',monospace; --sans:'DM Sans',sans-serif; --serif:'DM Serif Display',Georgia,serif; }
-    * { box-sizing:border-box; }
+    :root {
+      --ink:#12100e; --ink-soft:#47423a; --ink-muted:#766f64; --paper:#f4f1ea; --paper-raised:#fbfaf7; --paper-deep:#e9e4da;
+      --rule:rgba(18,16,14,.14); --rule-strong:rgba(18,16,14,.28); --evidence:#1e42a8; --evidence-soft:#e6ebff; --brass:#896219; --brass-soft:#f4ecd8; --risk:#aa332c;
+      --serif:'DM Serif Display',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+      --focus:#1658d4; --ease:cubic-bezier(.23,1,.32,1);
+    }
+    *,*::before,*::after { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:var(--paper); font-family:var(--sans); line-height:1.65; }
-    a { color:inherit; }
-    a:focus-visible { outline:3px solid var(--signal); outline-offset:4px; }
-    .masthead { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 5vw; border-bottom:1px solid var(--rule); background:rgba(246,245,241,.96); position:sticky; top:0; z-index:10; }
-    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; font:500 10px/1.3 var(--mono); letter-spacing:.14em; text-transform:uppercase; }
-    .mark { width:27px; height:27px; border:1px solid var(--blue); display:grid; place-items:center; color:var(--blue); font-size:10px; }
-    .masthead nav { display:flex; gap:24px; flex-wrap:wrap; justify-content:flex-end; font:500 10px/1.3 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
-    .masthead nav a { text-decoration:none; }
-    .masthead nav a:hover { color:var(--blue); }
-    main { max-width:1250px; margin:0 auto; padding:0 5vw; }
-    .hero { padding:clamp(64px,10vw,132px) 0 56px; display:grid; grid-template-columns:minmax(0,1.18fr) minmax(280px,.82fr); gap:clamp(40px,8vw,112px); border-bottom:1px solid var(--rule); }
-    .eyebrow, .kicker { margin:0 0 22px; font:500 10px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.16em; color:var(--blue); }
-    .eyebrow::before { content:'●'; color:var(--signal); margin-right:10px; font-size:9px; }
-    h1, h2, h3 { margin:0; font-weight:400; }
-    h1 { max-width:10ch; font:clamp(3.2rem,7vw,6.75rem)/.93 var(--serif); letter-spacing:-.04em; }
-    .lede { align-self:end; border-left:2px solid var(--blue); padding:0 0 0 26px; }
-    .lede p { margin:0; max-width:42ch; font-size:1.18rem; color:var(--ink-soft); }
-    .lede strong { color:var(--ink); font-weight:600; }
-    .route { padding:56px 0; border-bottom:1px solid var(--rule); }
-    .route-head { display:flex; align-items:end; justify-content:space-between; gap:32px; margin-bottom:26px; }
-    h2 { font:clamp(2.1rem,4vw,3.5rem)/1.02 var(--serif); letter-spacing:-.025em; }
-    .route-head p { max-width:46ch; margin:0; color:var(--ink-soft); }
-    .route-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
-    .route-step { min-height:170px; padding:22px; background:var(--paper); }
-    .route-step span { display:block; margin-bottom:44px; color:var(--blue); font:500 10px var(--mono); letter-spacing:.12em; }
-    .route-step strong { display:block; font-size:1rem; margin-bottom:6px; }
-    .route-step p { margin:0; color:var(--ink-soft); font-size:.9rem; line-height:1.5; }
-    .index { padding:76px 0; display:grid; grid-template-columns:minmax(180px,.6fr) minmax(0,1.4fr); gap:clamp(36px,7vw,104px); border-bottom:1px solid var(--rule); }
-    .index-intro p { color:var(--ink-soft); max-width:30ch; }
-    .field-list { border-top:1px solid var(--rule); }
-    .field { display:grid; grid-template-columns:70px minmax(0,1fr) minmax(0,.8fr); gap:22px; padding:24px 0; border-bottom:1px solid var(--rule); }
-    .field-id { color:var(--blue); font:500 10px var(--mono); letter-spacing:.12em; padding-top:6px; }
-    h3 { font:600 1.05rem/1.35 var(--sans); margin-bottom:7px; }
-    .field p { margin:0; color:var(--ink-soft); font-size:.94rem; }
-    .field .boundary { padding-left:18px; border-left:1px solid var(--rule); font:400 .82rem/1.5 var(--mono); color:#65717e; }
-    .boundary strong { display:block; margin-bottom:6px; color:var(--ink); font-weight:500; }
-    .principles { padding:76px 0; display:grid; grid-template-columns:1fr 1fr; gap:48px; border-bottom:1px solid var(--rule); }
-    .principles p { color:var(--ink-soft); max-width:52ch; }
-    .box { padding:28px; background:var(--panel); border-top:3px solid var(--blue); }
-    .box p { margin:0; color:var(--ink-soft); }
-    .box strong { color:var(--ink); }
-    .source-row { padding:56px 0 76px; display:grid; grid-template-columns:.7fr 1.3fr; gap:48px; }
-    .sources { margin:0; padding:0; list-style:none; border-top:1px solid var(--rule); }
-    .sources li { border-bottom:1px solid var(--rule); padding:15px 0; }
-    .sources a { color:var(--blue); font-size:.92rem; }
-    .sources span { display:block; color:var(--ink-soft); font-size:.82rem; margin-top:3px; }
-    .next { padding:56px 0; background:var(--blue); color:#fff; }
-    .next-inner { max-width:1250px; margin:0 auto; padding:0 5vw; display:flex; align-items:end; justify-content:space-between; gap:36px; }
-    .next h2 { max-width:14ch; }
-    .next p { max-width:48ch; color:rgba(255,255,255,.78); }
-    .action { display:inline-flex; align-items:center; gap:12px; padding:13px 18px; background:#fff; color:var(--blue); text-decoration:none; font:500 10px var(--mono); letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
-    footer { padding:34px 5vw; color:var(--ink-soft); font:400 10px/1.6 var(--mono); letter-spacing:.06em; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; }
-    @media (max-width:820px) { .hero,.index,.principles,.source-row { grid-template-columns:1fr; } .route-grid { grid-template-columns:repeat(2,1fr); } .field { grid-template-columns:52px 1fr; } .field .boundary { grid-column:2; } .route-head,.next-inner { display:block; } .route-head p { margin-top:18px; } .next-inner .action { margin-top:22px; } }
-    @media (max-width:560px) { .masthead { min-height:72px; } .masthead nav a:not(:last-child) { display:none; } .hero { padding-top:60px; } h1 { font-size:3.7rem; } .route-grid { grid-template-columns:1fr; } .route-step { min-height:auto; } .route-step span { margin-bottom:22px; } .field { gap:14px; } }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+    body { margin:0; background:var(--paper); color:var(--ink); font:300 16px/1.58 var(--sans); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    a { color:inherit; } button,a { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:3px solid var(--focus); outline-offset:4px; }
+    .skip-link { position:fixed; z-index:100; top:12px; left:12px; transform:translateY(-160%); padding:10px 12px; background:var(--ink); color:var(--paper); font:500 11px/1 var(--mono); letter-spacing:.06em; text-decoration:none; transition:transform 160ms var(--ease); }
+    .skip-link:focus { transform:translateY(0); }
+
+    .site-header { position:sticky; z-index:20; top:0; display:flex; min-height:60px; align-items:center; justify-content:space-between; gap:20px; padding:0 4.8vw; border-bottom:1px solid var(--rule); background:color-mix(in srgb,var(--paper) 94%,transparent); backdrop-filter:blur(12px); }
+    .wordmark,.meta-link { font:500 10px/1.25 var(--mono); letter-spacing:.095em; text-transform:uppercase; text-decoration:none; }
+    .wordmark { display:flex; align-items:center; gap:9px; color:var(--ink); } .wordmark-mark { display:grid; width:24px; height:24px; place-items:center; border:1px solid var(--evidence); color:var(--evidence); font-size:8px; }
+    .wordmark span:last-child { color:var(--ink-soft); } .desktop-nav { display:flex; align-items:center; gap:21px; } .meta-link { color:var(--ink-muted); border-bottom:1px solid transparent; } .meta-link:hover { color:var(--ink); border-color:var(--ink-soft); }
+    .nav-toggle { display:none; width:39px; height:34px; padding:7px; border:0; background:transparent; cursor:pointer; } .nav-toggle span { display:block; height:1px; margin:5px 0; background:var(--ink); }
+    .mobile-nav { display:none; }
+
+    .hero { position:relative; overflow:hidden; padding:clamp(68px,9vw,132px) 4.8vw clamp(54px,6.5vw,94px); color:#fbfaf7; background:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px),radial-gradient(circle at 85% 5%,#263e9d 0,#1b2d76 22%,#15191f 50%,#12100e 76%); background-size:32px 32px,32px 32px,auto; }
+    .hero::after { content:""; position:absolute; right:max(4.8vw,2rem); bottom:-23rem; width:min(62vw,740px); height:min(62vw,740px); border:1px solid rgba(255,255,255,.13); border-radius:50%; box-shadow:0 0 0 42px rgba(255,255,255,.035),0 0 0 84px rgba(255,255,255,.025); pointer-events:none; }
+    .hero-inner { position:relative; z-index:1; max-width:1280px; margin:0 auto; }
+    .eyebrow,.section-label,.step-number,.field-id,.card-kicker { font-family:var(--mono); letter-spacing:.085em; text-transform:uppercase; }
+    .eyebrow { display:flex; align-items:center; gap:10px; margin:0 0 20px; color:#d8e0ff; font-size:11px; } .eyebrow-mark { width:7px; height:7px; border-radius:50%; background:#aebdff; box-shadow:0 0 0 4px rgba(174,189,255,.12); }
+    h1,h2,h3,p { margin-top:0; } h1 { max-width:900px; margin-bottom:21px; font:400 clamp(3.6rem,8vw,7.4rem)/.89 var(--serif); letter-spacing:-.045em; text-wrap:balance; }
+    .hero-copy { max-width:665px; margin:0; color:#e4e2dd; font-size:clamp(1.06rem,1.5vw,1.24rem); line-height:1.65; }
+    .hero-facts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); max-width:982px; margin-top:clamp(50px,6vw,86px); border-top:1px solid rgba(255,255,255,.18); }
+    .fact { min-height:105px; padding:16px 22px 0 0; border-right:1px solid rgba(255,255,255,.18); } .fact + .fact { padding-left:22px; } .fact:last-child { border-right:0; }
+    .fact-label { margin:0 0 8px; color:#aaa69d; font:10px/1.3 var(--mono); letter-spacing:.09em; text-transform:uppercase; } .fact-value { margin:0; color:#fff; font-size:14px; line-height:1.46; }
+
+    main { max-width:1440px; margin:0 auto; } .band { padding:clamp(52px,6.2vw,95px) 4.8vw; border-bottom:1px solid var(--rule); } .band-grid { display:grid; grid-template-columns:minmax(160px,.65fr) minmax(0,2.35fr); gap:clamp(32px,5vw,100px); }
+    .section-label { margin:0; color:var(--ink-muted); font-size:10px; line-height:1.4; } .section-label .numeral { display:block; margin-bottom:8px; color:var(--evidence); }
+    h2 { margin-bottom:16px; font:400 clamp(2.25rem,4vw,4.2rem)/.96 var(--serif); letter-spacing:-.035em; text-wrap:balance; } h3 { font-weight:500; }
+    .lead { max-width:730px; margin-bottom:0; color:var(--ink-soft); font-size:clamp(1rem,1.35vw,1.16rem); line-height:1.65; }
+    .route-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; margin-top:34px; border:1px solid var(--rule-strong); background:var(--rule-strong); } .route-step { min-height:188px; padding:20px; background:var(--paper-raised); } .step-number { display:block; margin-bottom:47px; color:var(--evidence); font-size:10px; } .route-step strong { display:block; margin-bottom:7px; font-size:16px; font-weight:500; } .route-step p { margin:0; color:var(--ink-muted); font-size:13px; line-height:1.5; }
+
+    .boundary-card { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(260px,.85fr); margin-top:32px; border:1px solid var(--rule-strong); background:var(--paper-raised); } .boundary-copy,.boundary-terms { padding:clamp(22px,3vw,38px); } .boundary-copy h3 { margin:.28rem 0 .75rem; font:400 26px/1 var(--serif); letter-spacing:-.02em; } .boundary-copy p { max-width:600px; margin:0; color:var(--ink-soft); }
+    .boundary-terms { border-left:1px solid var(--rule); background:var(--paper-deep); } .boundary-terms p { margin:0; color:var(--ink-soft); font-size:14px; line-height:1.52; } .boundary-terms strong { color:var(--ink); font-weight:500; } .boundary-terms::before { content:"APPLICATION BOUNDARY"; display:block; margin-bottom:14px; color:var(--brass); font:10px/1.2 var(--mono); letter-spacing:.08em; }
+
+    .field-list { margin-top:28px; border-top:1px solid var(--rule-strong); } .field { display:grid; grid-template-columns:70px minmax(0,1.15fr) minmax(200px,.85fr); gap:22px; padding:25px 0; border-bottom:1px solid var(--rule); } .field-id { padding-top:5px; color:var(--evidence); font-size:10px; } .field h3 { margin:0 0 7px; font-size:17px; } .field p { margin:0; color:var(--ink-soft); font-size:14px; line-height:1.55; } .field .boundary { padding-left:18px; border-left:1px solid var(--rule); color:var(--ink-muted); font:12px/1.5 var(--mono); } .boundary strong { display:block; margin-bottom:6px; color:var(--ink); font-weight:500; }
+
+    .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:31px; border:1px solid var(--rule-strong); background:var(--rule-strong); } .proof-card { min-height:205px; padding:22px; background:var(--paper-raised); } .card-kicker { margin:0 0 20px; color:var(--evidence); font-size:10px; } .proof-card h3 { margin-bottom:11px; font:400 25px/1 var(--serif); letter-spacing:-.025em; } .proof-card p { margin:0; color:var(--ink-soft); font-size:14px; line-height:1.52; }
+    .source-list { display:grid; gap:0; margin-top:30px; border-top:1px solid var(--rule-strong); } .source-item { display:grid; grid-template-columns:175px 1fr; gap:20px; padding:15px 0; border-bottom:1px solid var(--rule); } .source-item span { color:var(--ink-muted); font:10px/1.4 var(--mono); letter-spacing:.075em; text-transform:uppercase; } .source-item a,.source-item p { margin:0; color:var(--ink-soft); font-size:14px; } .source-item a { color:var(--evidence); text-decoration-color:rgba(30,66,168,.32); text-underline-offset:.16em; }
+    .next { padding:clamp(50px,6vw,88px) 4.8vw; background:var(--ink); color:#fff; } .next-inner { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:40px; max-width:1280px; margin:0 auto; } .next .section-label { color:#aaa69d; } .next .section-label .numeral { color:#aebdff; } .next h2 { max-width:15ch; margin-bottom:15px; } .next p { max-width:620px; margin-bottom:0; color:#d1cec7; }
+    .action { display:inline-flex; align-items:center; gap:12px; padding:14px 17px; border:1px solid rgba(255,255,255,.4); color:#fff; font:500 10px/1.2 var(--mono); letter-spacing:.09em; text-decoration:none; text-transform:uppercase; white-space:nowrap; transition:background 160ms var(--ease),color 160ms var(--ease),transform 160ms var(--ease); } .action:hover { background:#fff; color:var(--ink); } .action:active { transform:scale(.97); }
+    .site-footer { padding:25px 4.8vw; background:var(--ink); border-top:1px solid rgba(255,255,255,.14); color:#aaa59b; } .footer-inner { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; max-width:1340px; margin:0 auto; } .footer-inner p,.footer-inner a { margin:0; font:10px/1.55 var(--mono); letter-spacing:.05em; text-decoration:none; } .footer-inner a:hover { color:#fff; }
+
+    .page-status { position:fixed; right:20px; bottom:20px; z-index:30; display:flex; align-items:flex-start; gap:10px; max-width:min(410px,calc(100vw - 40px)); padding:12px 14px; background:var(--ink); color:#fff; box-shadow:0 10px 30px rgba(16,21,28,.22); font:500 10px/1.48 var(--mono); letter-spacing:.04em; transition:opacity 180ms var(--ease),transform 180ms var(--ease); } .page-status[hidden] { display:none; } .page-status.is-leaving { opacity:0; transform:translateY(8px); } .page-status[data-state="error"] { background:#6d231b; } .status-pulse { width:8px; height:8px; flex:0 0 auto; margin-top:3px; border-radius:50%; background:#fff; animation:status-pulse 1s ease-in-out infinite; } .page-status[data-state="error"] .status-pulse { background:#ffd1c9; animation:none; } .status-actions { display:flex; align-items:center; gap:12px; margin-top:7px; } .status-actions a,.status-actions button { appearance:none; border:0; padding:0; color:#fff; background:transparent; font:inherit; letter-spacing:inherit; text-decoration:underline; text-underline-offset:3px; cursor:pointer; } @keyframes status-pulse { 50% { opacity:.25; transform:scale(.75); } }
+
+    @media (max-width:840px) { .site-header { padding:0 20px; } .desktop-nav { display:none; } .nav-toggle { display:block; } .mobile-nav { position:fixed; inset:60px 0 auto; z-index:19; padding:12px 20px 16px; border-bottom:1px solid var(--rule); background:var(--paper); box-shadow:0 10px 20px rgba(18,16,14,.08); } .mobile-nav[data-open="true"] { display:grid; gap:5px; } .mobile-nav a { padding:10px 0; border-bottom:1px solid var(--rule); color:var(--ink-muted); font:10px/1.25 var(--mono); letter-spacing:.08em; text-decoration:none; text-transform:uppercase; } .hero,.band,.next { padding-left:20px; padding-right:20px; } .hero-facts { grid-template-columns:1fr; margin-top:44px; } .fact,.fact + .fact { min-height:auto; padding:14px 0; border-right:0; border-bottom:1px solid rgba(255,255,255,.18); } .fact:last-child { border-bottom:0; } .band-grid { grid-template-columns:1fr; gap:20px; } .route-grid { grid-template-columns:repeat(2,1fr); } .boundary-card { grid-template-columns:1fr; } .boundary-terms { border-top:1px solid var(--rule); border-left:0; } .field { grid-template-columns:54px 1fr; gap:14px; } .field .boundary { grid-column:2; } .proof-grid { grid-template-columns:1fr; } .source-item { grid-template-columns:1fr; gap:4px; } .next-inner { grid-template-columns:1fr; align-items:start; } }
+    @media (max-width:520px) { h1 { font-size:clamp(3.35rem,16vw,4.8rem); } .route-grid { grid-template-columns:1fr; } .route-step { min-height:auto; } .step-number { margin-bottom:24px; } .page-status { right:12px; bottom:12px; max-width:calc(100vw - 24px); } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
   </style>
 </head>
 <body>
-  <header class="masthead">
-    <a class="brand" href="/" aria-label="Autonomous Resource Management home"><span class="mark">ARM</span><span>Autonomous<br>Resource Management</span></a>
-    <nav aria-label="Primary navigation"><a href="/">Reference</a><a href="#field-index">Field index</a><a href="#sources">Sources</a><a href="https://coreweaverlabs.com/autonomous-resource-management#primitives">Method primitives ↗</a></nav>
+  <a class="skip-link" href="#main-content">Skip to Field Systems index</a>
+  <aside id="page-status" class="page-status" data-state="loading" role="status" aria-live="polite" aria-atomic="true">
+    <span class="status-pulse" aria-hidden="true"></span>
+    <div><span id="status-message">Preparing the Field Systems index.</span><span id="status-actions" class="status-actions" hidden><button type="button" id="retry-page">Refresh page</button><a href="/">Return to ARM reference</a></span></div>
+  </aside>
+  <header class="site-header">
+    <a class="wordmark" href="/" aria-label="Autonomous Resource Management home"><span class="wordmark-mark">ARM</span><span>Autonomous Resource<br>Management</span></a>
+    <nav class="desktop-nav" aria-label="Field Systems sections"><a class="meta-link" href="#route">Decision route</a><a class="meta-link" href="#field-index">Field index</a><a class="meta-link" href="#sources">Sources</a><a class="meta-link" href="https://coreweaverlabs.com/autonomous-resource-management#primitives">Method primitives ↗</a></nav>
+    <button class="nav-toggle" type="button" aria-label="Open section navigation" aria-controls="mobile-nav" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
+  <nav id="mobile-nav" class="mobile-nav" data-open="false" aria-label="Field Systems sections"><a href="#route">Decision route</a><a href="#field-index">Field index</a><a href="#sources">Sources</a><a href="https://coreweaverlabs.com/autonomous-resource-management#primitives">Method primitives ↗</a></nav>
 
-  <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div><p class="eyebrow">Field index / working frame</p><h1 id="page-title">Where resource decisions meet the field.</h1></div>
-      <div class="lede"><p><strong>Field Systems</strong> is a bounded index for teams examining how resource decisions, constraints, escalation, and retained records appear in different operating contexts. It is a framing tool, not a deployed control system.</p></div>
-    </section>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title"><div class="hero-inner"><p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span>Field index / working frame</p><h1 id="page-title">Where resource decisions meet the field.</h1><p class="hero-copy"><strong>Field Systems</strong> is a bounded index for teams examining how resource decisions, constraints, escalation, and retained records appear in different operating contexts. It is a framing tool, not a deployed control system.</p><div class="hero-facts" aria-label="Field Systems scope"><div class="fact"><p class="fact-label">Surface</p><p class="fact-value">Reference index for applied questions.</p></div><div class="fact"><p class="fact-label">Authority</p><p class="fact-value">Inquiry and method context only.</p></div><div class="fact"><p class="fact-label">Method anchor</p><p class="fact-value">ARM primitives and explicit human escalation.</p></div></div></div></section>
 
-    <section class="route" aria-labelledby="route-title">
-      <div class="route-head"><div><p class="kicker">A portable decision route</p><h2 id="route-title">Start with what must be inspectable.</h2></div><p>This five-part route adapts the ARM reference to a field context. It helps structure a question before assuming a system, product, integration, or outcome.</p></div>
-      <div class="route-grid" aria-label="Field systems decision route">
-        <div class="route-step"><span>01</span><strong>Observe</strong><p>Name the resource, its operating context, and the signals available for review.</p></div>
-        <div class="route-step"><span>02</span><strong>Compare</strong><p>Make the constraint, threshold, or trade-off explicit instead of treating it as implicit.</p></div>
-        <div class="route-step"><span>03</span><strong>Constrain</strong><p>Define the authority and limit that governs what a system may recommend or do.</p></div>
-        <div class="route-step"><span>04</span><strong>Escalate</strong><p>Specify where uncertainty, conflict, or exception returns to accountable human review.</p></div>
-        <div class="route-step"><span>05</span><strong>Retain</strong><p>Keep an inspectable record of the decision, its basis, and its permitted next step.</p></div>
-      </div>
-    </section>
+    <section class="band" id="route" aria-labelledby="route-title"><div class="band-grid"><p class="section-label"><span class="numeral">01</span>Decision route</p><div><h2 id="route-title">Start with what must be inspectable.</h2><p class="lead">This five-part route adapts the ARM reference to a field context. It helps structure a question before assuming a system, product, integration, or outcome.</p><div class="route-grid" aria-label="Field Systems decision route"><div class="route-step"><span class="step-number">01</span><strong>Observe</strong><p>Name the resource, its operating context, and the signals available for review.</p></div><div class="route-step"><span class="step-number">02</span><strong>Compare</strong><p>Make the constraint, threshold, or trade-off explicit instead of treating it as implicit.</p></div><div class="route-step"><span class="step-number">03</span><strong>Constrain</strong><p>Define the authority and limit that governs what a system may recommend or do.</p></div><div class="route-step"><span class="step-number">04</span><strong>Escalate</strong><p>Specify where uncertainty, conflict, or exception returns to accountable human review.</p></div><div class="route-step"><span class="step-number">05</span><strong>Retain</strong><p>Keep an inspectable record of the decision, its basis, and its permitted next step.</p></div></div></div></div></section>
 
-    <section class="index" id="field-index" aria-labelledby="index-title">
-      <div class="index-intro"><p class="kicker">Current contexts</p><h2 id="index-title">A field index, not a claim of operation.</h2><p>Each context below is a route for inquiry. It does not establish that ARM controls equipment, delivers an outcome, or is endorsed by an external organization.</p></div>
-      <div class="field-list">
-        <article class="field"><div class="field-id">F.01</div><div><h3>Energy-system decisions</h3><p>Consider how resource constraints, dispatch assumptions, escalation paths, and retained decision records could be framed in energy-system contexts.</p></div><div class="boundary"><strong>Boundary</strong>Links to an applied method discussion; it does not claim operation or optimization of an energy system.</div></article>
-        <article class="field"><div class="field-id">F.02</div><div><h3>Industrial automation contexts</h3><p>Examine the decision boundary between observation, interpretation, permitted action, and operator review in industrial settings.</p></div><div class="boundary"><strong>Boundary</strong>Does not assert deployment within an industrial control system or any safety, reliability, or performance effect.</div></article>
-        <article class="field"><div class="field-id">F.03</div><div><h3>Process and material routes</h3><p>Map the questions that surface around process state, material movement, monitoring, inspection, and accountable handoffs.</p></div><div class="boundary"><strong>Boundary</strong>Names application topics; it does not replace engineering review, safety controls, or operating procedures.</div></article>
-        <article class="field"><div class="field-id">F.04</div><div><h3>Evidence and governance</h3><p>Keep the claim, source, media record, review owner, and next decision visible as a system moves from framework to application.</p></div><div class="boundary"><strong>Boundary</strong>A cited framework informs context; it is not certification, endorsement, or compliance assurance.</div></article>
-      </div>
-    </section>
+    <section class="band" id="field-index" aria-labelledby="index-title"><div class="band-grid"><p class="section-label"><span class="numeral">02</span>Field index</p><div><h2 id="index-title">A field index, not a claim of operation.</h2><p class="lead">Each context below is a route for inquiry. It does not establish that ARM controls equipment, delivers an outcome, or is endorsed by an external organization.</p><div class="field-list"><article class="field"><div class="field-id">F.01</div><div><h3>Energy-system decisions</h3><p>Consider how resource constraints, dispatch assumptions, escalation paths, and retained decision records could be framed in energy-system contexts.</p></div><div class="boundary"><strong>Boundary</strong>Links to an applied method discussion; it does not claim operation or optimization of an energy system.</div></article><article class="field"><div class="field-id">F.02</div><div><h3>Industrial automation contexts</h3><p>Examine the decision boundary between observation, interpretation, permitted action, and operator review in industrial settings.</p></div><div class="boundary"><strong>Boundary</strong>Does not assert deployment within an industrial control system or any safety, reliability, or performance effect.</div></article><article class="field"><div class="field-id">F.03</div><div><h3>Process and material routes</h3><p>Map the questions that surface around process state, material movement, monitoring, inspection, and accountable handoffs.</p></div><div class="boundary"><strong>Boundary</strong>Names application topics; it does not replace engineering review, safety controls, or operating procedures.</div></article><article class="field"><div class="field-id">F.04</div><div><h3>Evidence and governance</h3><p>Keep the claim, source, media record, review owner, and next decision visible as a system moves from framework to application.</p></div><div class="boundary"><strong>Boundary</strong>A cited framework informs context; it is not certification, endorsement, or compliance assurance.</div></article></div></div></div></section>
 
-    <section class="principles" aria-labelledby="limits-title">
-      <div><p class="kicker">How to use this page</p><h2 id="limits-title">Use a field to sharpen a question, not enlarge a promise.</h2></div>
-      <div class="box"><p><strong>What this index supports:</strong> a structured discussion of decision routes, sources, and escalation boundaries. <strong>What it does not support:</strong> a claim that a particular field implementation is safe, compliant, autonomous, certified, or already in operation.</p></div>
-    </section>
+    <section class="band" aria-labelledby="limits-title"><div class="band-grid"><p class="section-label"><span class="numeral">03</span>Application boundary</p><div><h2 id="limits-title">Use a field to sharpen a question, not enlarge a promise.</h2><div class="boundary-card"><div class="boundary-copy"><h3>Application begins with a bounded decision.</h3><p>Use this index to structure a discussion of decision routes, source context, and escalation boundaries before representing a tool, implementation, or result.</p></div><div class="boundary-terms"><p><strong>What this index supports:</strong> a structured discussion of decision routes, sources, and escalation boundaries. <strong>What it does not support:</strong> a claim that a particular field implementation is safe, compliant, autonomous, certified, or already in operation.</p></div></div></div></div></section>
 
-    <section class="source-row" id="sources" aria-labelledby="sources-title">
-      <div><p class="kicker">Reference context</p><h2 id="sources-title">Sources that inform the inquiry.</h2></div>
-      <ol class="sources">
-        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a><span>Voluntary context for considering trustworthiness and risk-management practice; not a Coreweaver certification or control set.</span></li>
-        <li><a href="https://www.nist.gov/mep/robotics-and-manufacturing-automation" target="_blank" rel="noopener">NIST Manufacturing Extension Partnership — Robotics and Manufacturing Automation</a><span>Context for manufacturing automation applications including material handling and visual inspection.</span></li>
-        <li><a href="https://www.cisa.gov/topics/industrial-control-systems" target="_blank" rel="noopener">CISA — Industrial Control Systems</a><span>Reference context for industrial control-system security and operating environments.</span></li>
-      </ol>
-    </section>
+    <section class="band" id="sources" aria-labelledby="sources-title"><div class="band-grid"><p class="section-label"><span class="numeral">04</span>Reference context</p><div><h2 id="sources-title">Sources that inform the inquiry.</h2><p class="lead">These references provide context for the questions on this page. They do not certify a Field Systems implementation or establish a Coreweaver control set.</p><div class="proof-grid"><article class="proof-card"><p class="card-kicker">Reference</p><h3>ARM primitives</h3><p>Read the core method framing before carrying it into any operational or industrial application context.</p></article><article class="proof-card"><p class="card-kicker">Boundary</p><h3>Human escalation</h3><p>Uncertainty, conflict, exception, and claimed impact should return to accountable review rather than be inferred from a field label.</p></article><article class="proof-card"><p class="card-kicker">Record</p><h3>Source-aware context</h3><p>Keep the source, claim, reviewer, and permitted next step visible when a framework moves toward an applied surface.</p></article></div><div class="source-list"><div class="source-item"><span>Risk-management context</span><div><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a><p>Voluntary context for considering trustworthiness and risk-management practice; not a Coreweaver certification or control set.</p></div></div><div class="source-item"><span>Manufacturing context</span><div><a href="https://www.nist.gov/mep/robotics-and-manufacturing-automation" target="_blank" rel="noopener">NIST Manufacturing Extension Partnership — Robotics and Manufacturing Automation</a><p>Context for manufacturing automation applications including material handling and visual inspection.</p></div></div><div class="source-item"><span>Industrial-system context</span><div><a href="https://www.cisa.gov/topics/industrial-control-systems" target="_blank" rel="noopener">CISA — Industrial Control Systems</a><p>Reference context for industrial control-system security and operating environments.</p></div></div></div></div></div></section>
   </main>
 
-  <section class="next" aria-labelledby="next-title"><div class="next-inner"><div><p class="kicker">Method anchor</p><h2 id="next-title">Read the method before applying the field.</h2><p>The Coreweaver Labs ARM page explains the current method primitives that this index uses as a contextual anchor. Application pages should make their limits and source basis as legible as their proposed route.</p></div><a class="action" href="https://coreweaverlabs.com/autonomous-resource-management#primitives">View ARM primitives <span aria-hidden="true">→</span></a></div></section>
+  <section class="next" aria-labelledby="next-title"><div class="next-inner"><div><p class="section-label"><span class="numeral">05</span>Method anchor</p><h2 id="next-title">Read the method before applying the field.</h2><p>The Coreweaver Labs ARM page explains the current method primitives that this index uses as a contextual anchor. Application pages should make their limits and source basis as legible as their proposed route.</p></div><a class="action" href="https://coreweaverlabs.com/autonomous-resource-management#primitives">View ARM primitives <span aria-hidden="true">→</span></a></div></section>
+  <footer class="site-footer"><div class="footer-inner"><p>Field Systems / Autonomous Resource Management / Working index</p><a href="/">Return to ARM reference</a></div></footer>
 
-  <footer><span>Field Systems / Autonomous Resource Management</span><span>Working index · Updated 2026-08-27</span><a href="/">Return to ARM reference</a></footer>
+  <script>
+    (() => {
+      const status = document.getElementById('page-status');
+      const message = document.getElementById('status-message');
+      const actions = document.getElementById('status-actions');
+      const retry = document.getElementById('retry-page');
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.mobile-nav');
+      let settled = false;
+      const finishLoading = () => { if (settled || !status) return; settled = true; status.classList.add('is-leaving'); window.setTimeout(() => { status.hidden = true; }, 200); };
+      const showIssue = (copy) => { if (!status || !message || !actions) return; settled = true; status.classList.remove('is-leaving'); status.hidden = false; status.dataset.state = 'error'; message.textContent = copy; actions.hidden = false; };
+      window.addEventListener('load', () => window.setTimeout(finishLoading, 220), { once:true });
+      window.addEventListener('offline', () => showIssue('You appear to be offline. Visible page content remains available; external sources may not open.'));
+      window.addEventListener('error', () => showIssue('Part of this page did not load as intended. Review the visible content, then refresh if needed.'));
+      window.addEventListener('unhandledrejection', () => showIssue('Part of this page did not load as intended. Review the visible content, then refresh if needed.'));
+      retry?.addEventListener('click', () => window.location.reload());
+      if (!navigator.onLine) showIssue('You appear to be offline. Visible page content remains available; external sources may not open.');
+      if (toggle && nav) { toggle.addEventListener('click', () => { const open = nav.dataset.open !== 'true'; nav.dataset.open = String(open); toggle.setAttribute('aria-expanded', String(open)); toggle.setAttribute('aria-label', open ? 'Close section navigation' : 'Open section navigation'); }); nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { nav.dataset.open = 'false'; toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open section navigation'); })); }
+    })();
+  </script>
 </body>
 </html>
