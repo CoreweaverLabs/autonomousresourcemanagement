@@ -3,6 +3,18 @@
 __ARM_HOSTNAME__ {
     root * /var/www/arm-page-factory/current
     encode zstd gzip
+
+    header {
+        -Server
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "geolocation=(), microphone=(), camera=()"
+        Strict-Transport-Security "max-age=31536000"
+    }
+
+    @restricted path /.git/* /.github/* /ops/* /README.md
+    respond @restricted 404
+
     file_server
 
     @html path / /index.html /robots.txt /sitemap.xml /llms.txt /schema.json

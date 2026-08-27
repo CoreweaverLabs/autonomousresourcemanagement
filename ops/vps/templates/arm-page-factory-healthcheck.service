@@ -1,0 +1,15 @@
+[Unit]
+Description=ARM Page Factory anonymous HTTPS health check
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=armdeploy
+Group=armdeploy
+EnvironmentFile=/etc/arm-page-factory/healthcheck.env
+ExecStart=/srv/arm-page-factory/ops/vps/scripts/healthcheck.sh
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes

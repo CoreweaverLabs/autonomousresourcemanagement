@@ -31,6 +31,10 @@ Set the deployment workflow’s variables and deploy key only after the initial 
 
 List releases on the server, point `current` to the prior verified release, reload Caddy only if its configuration changed, then run the anonymous HTTPS and mobile checks. For a failed DNS cutover, restore the recorded prior DNS target rather than changing unrelated nameserver, MX, or verification records.
 
+## Production acceptance
+
+Read [`production-acceptance.md`](production-acceptance.md) before moving any hostname from preview to canonical production. A production release needs an approved release manifest, an anonymous HTTPS check, a desktop and mobile render check, a working health-check timer, a verified retained release, and a named rollback owner. Passing source preflight alone is not production readiness.
+
 ## Resources
 
 - `scripts/preflight.mjs` validates the repository artifact before upload.
